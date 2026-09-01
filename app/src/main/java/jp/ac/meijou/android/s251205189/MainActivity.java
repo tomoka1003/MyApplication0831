@@ -45,28 +45,34 @@ public class MainActivity extends AppCompatActivity {
             binding.textView.setText(text);
         });
 
-        binding.savebutton.setOnClickListener(view -> {
-            String text = binding.editTextText.getText().toString();
-            prefDataStore.setString("name", text);
+        prefDataStore.getString("image").ifPresent(savedText -> {
+            if ("a".equals(savedText)) {
+                binding.imageView.setImageResource(R.drawable.ic_android);
+            } else if ("b".equals(savedText)) {
+                binding.imageView.setImageResource(R.drawable.ic_add_loation);
+            } else if ("c".equals(savedText)) {
+                binding.imageView.setImageResource(R.drawable.outline_123_24);
+            }else{
+                binding.imageView.setImageResource(R.drawable.outline_16mp_24);
+            }
         });
 
-        binding.editTextText.addTextChangedListener(new TextWatcher(){
-            @Override
-            public void afterTextChanged(Editable editable){
-                String text = editable.toString();
-                binding.textView.setText(text);
+        binding.savebutton.setOnClickListener(view -> {
+            String text = binding.editTextText.getText().toString();
+            if ("a".equals(text)) {
+                binding.imageView.setImageResource(R.drawable.ic_android);
+            }else if("b".equals(text)){
+                binding.imageView.setImageResource(R.drawable.ic_add_loation);
+            }else if("c".equals(text)){
+                binding.imageView.setImageResource(R.drawable.outline_123_24);
+            }else{
+                binding.imageView.setImageResource(R.drawable.outline_16mp_24);
             }
 
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            prefDataStore.setString("name", text);
+            prefDataStore.setString("image", text);
+        });
 
-            }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                }
-            }
-        );
     }
 }

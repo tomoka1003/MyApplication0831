@@ -53,4 +53,17 @@ public class PrefDataStore {
                 .blockingFirst();
     }
 
+    public <T> Optional<T> get(Preferences.Key<T> key) {
+        return dataStore.data()
+                .map(prefs -> Optional.ofNullable(prefs.get(key)))
+                .blockingFirst();
+    }
+    public <T> void set(Preferences.Key<T> key, T value) {
+        dataStore.updateDataAsync(prefsIn -> {
+                    var mutablePreferences = prefsIn.toMutablePreferences();
+                    mutablePreferences.set(key, value);
+                    return Single.just(mutablePreferences);
+                })
+                .subscribe();
+    }
 }
