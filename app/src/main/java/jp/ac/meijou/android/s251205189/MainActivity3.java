@@ -1,5 +1,6 @@
 package jp.ac.meijou.android.s251205189;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -20,5 +21,13 @@ public class MainActivity3 extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Intent intent =getIntent();
+        String sentText = intent.getStringExtra("editText");
+        binding.calcField.setText(sentText);
+
+        binding.button0.setOnClickListener(view ->{
+
+        })
     }
 }

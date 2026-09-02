@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/button_a"
-        android:text="ボタンA"
+        android:text="明示的Intent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@+id/button_b"
@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toStartOf="@+id/button_b" />
     <Button
         android:id="@+id/button_b"
-        android:text="ボタンB"
+        android:text="暗黙的Intent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,6 +50,15 @@
         app:layout_constraintTop_toBottomOf="@id/textView_invisible"
         app:layout_constraintStart_toStartOf="parent"
         android:text="これも最初は表示されている"/>
+
+    <EditText
+        android:id="@+id/intent_editText"
+        android:layout_width="8dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:hint="何か書いてね"
+        app:layoutconstraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
